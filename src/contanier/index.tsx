@@ -34,7 +34,7 @@ const ViewArea = ()=>{
     },
     [boxes, setBoxes],
   )
-  const [, drop] =  useDrop({
+  const [, dropbutton] =  useDrop({
     accept:"button",
     collect:(monitor)=>({}),
     drop(item:any, monitor) {
@@ -56,7 +56,7 @@ const ViewArea = ()=>{
       return undefined
     },
   })
-  drop(ref)
+  dropbutton(ref)
   dropinput(ref)
   return (
     <Contanier ref={ref} style={{position: 'relative',}}>
