@@ -7,7 +7,7 @@ import { DragInput } from '../dragComponents/form/input'
 
 const ViewArea = ()=>{
   const ref = useRef(null)
-  const [boxes, setBoxes] = useState<{
+  const [components, setComponents] = useState<{
     [key: string]: {
       key:string
       top: number
@@ -30,9 +30,9 @@ const ViewArea = ()=>{
   }
   const moveCopy = useCallback(
     (key: string, left: number, top: number) => {
-      setBoxes({...boxes,[key]:{key:key,left,top}})
+      setComponents({...components,[key]:{key:key,left,top}})
     },
-    [boxes, setBoxes],
+    [components, setComponents],
   )
   const [, dropbutton] =  useDrop({
     accept:"button",
@@ -60,8 +60,8 @@ const ViewArea = ()=>{
   dropinput(ref)
   return (
     <Contanier ref={ref} style={{position: 'relative',}}>
-     {(Object.keys(boxes)||[]).map((key,index)=>{
-      return createComponet(boxes[key],index)
+     {(Object.keys(components)||[]).map((key,index)=>{
+      return createComponet(components[key],index)
      })}
     </Contanier>
   )
